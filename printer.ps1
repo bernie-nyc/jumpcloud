@@ -14,7 +14,7 @@ $driverExtractPath = "C:\Drivers\Printers\$driverName"
 #the source file of the driver that needs to be downloaded. If this is a widespread driver, talk to CTO to get it uploaded
 $driverURL = "https://thewindwardschool.io/winpatch/Kxv4Driver_signed.zip"
 #look for the inf file that windows needs to map the printer, once the downloaded file is extracted
-$infFilePath = Get-ChildItem -Path $driverExtractPath -Recurse -Filter oemsetup.inf.inf | Select-Object -First 1
+$infFilePath = Get-ChildItem -Path $driverExtractPath -Recurse -Filter oemsetup.inf | Select-Object -First 1
 
 #getting to work - this process may take anywhere from 7-10 minutes, depending on driver size, and bandwidth/connectivity
 # Printer port configuration variables
