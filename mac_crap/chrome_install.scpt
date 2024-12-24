@@ -5,3 +5,4 @@ yes | hdiutil attach -noverify -nobrowse -mountpoint $temp/mount $temp/1.dmg
 cp -r $temp/mount/*.app /Applications
 hdiutil detach $temp/mount
 rm -r $temp
+defaults write com.apple.dock persistent-apps -array-add '{\"tile-data\":{\"file-data\":{\"path\":\"/Applications/Google Chrome.app\"}}}' && killall Dock";
