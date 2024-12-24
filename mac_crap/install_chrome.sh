@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Download the Google Chrome DMG
 curl -LO https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
 
