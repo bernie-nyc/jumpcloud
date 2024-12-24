@@ -1,12 +1,10 @@
-#!/bin/bash
-
 ##################################################################
 # 1) Install Google Chrome system-wide (root can do this part)
 ##################################################################
 
 # Download the Google Chrome DMG (Universal for Intel/Apple Silicon)
 curl -Ls -o /tmp/googlechrome.dmg \
-  "https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg"
+"https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg"
 
 # Mount the DMG (no UI)
 hdiutil attach /tmp/googlechrome.dmg -nobrowse -quiet
