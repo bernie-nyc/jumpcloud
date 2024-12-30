@@ -1,5 +1,9 @@
 # PowerShell Script to Configure Registry Keys for GoGuardian App
 
+# Append domain to the local username and store as a variable
+$localUsername = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
+$updatedUsername = "$localUsername@thewindwardschool.org"
+
 # Set LicenseTag Registry Key
 New-Item -Path "HKLM:\SOFTWARE\Policies\GoGuardian" -Force
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\GoGuardian" -Name "LicenseTag" -Value "<Your_License_App_ID>"
@@ -15,8 +19,8 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer\Cont
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\GoGuardian" -Name "IdentitySources" -Value "NONE"
 
 # Hardcode a Generic User Account to Sign in (Optional)
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\GoGuardian" -Name "UserEmail" -Value "<Generic_User_Email>"
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\GoGuardian" -Name "UserName" -Value "<Generic_Username>"
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\GoGuardian" -Name "UserEmail" -Value "$updatedUsername"
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\GoGuardian" -Name "UserName" -Value "$updatedUsername"
 
 # Disable Ephemeral Mode in Microsoft Edge for Shared Devices
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Force
