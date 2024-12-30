@@ -1,5 +1,11 @@
 # PowerShell Script to Configure Registry Keys for GoGuardian App
 
+# Download and install the GoGuardian MSI file
+$msiUrl = "https://thewindwardschool.io/winpatch/GoGuardianv1.13.4.msi"
+$msiPath = "$env:TEMP\GoGuardianv1.13.4.msi"
+Invoke-WebRequest -Uri $msiUrl -OutFile $msiPath
+Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiPath /quiet /norestart" -Wait
+
 # Append domain to the local username and store as a variable
 $localUsername = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
 $updatedUsername = "$localUsername@thewindwardschool.org"
