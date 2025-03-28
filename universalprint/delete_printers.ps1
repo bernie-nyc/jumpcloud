@@ -1,9 +1,15 @@
-# Define the patterns to match printers to delete
+# Self-elevate if not running as admin
+if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole] "Administrator")) {
+    Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+    exit
+}
+
+# Patterns for printer names to remove
 $printerPatterns = 'NYC|MMS|MLS|WMS|WLS'
 
-# Get mapped printers matching the patterns
+# Remove matching printers
 Get-Printer | Where-Object {
-    $_.Type -eq 'Connection' -and $_.Name -match $printerPatterns
+    $_.Name -match $printerPatterns
 } | ForEach-Object {
     try {
         Remove-Printer -Name $_.Name -Confirm:$false -ErrorAction Stop
