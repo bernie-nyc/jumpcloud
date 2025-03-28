@@ -6,7 +6,7 @@ $printerName = "NYC-4th Fl MLS-Library"
 $printerIP = "192.168.32.74"
 
 # pull down and execute the universal print section
-# the path for Kyro is: https://thewindwardschool.io/winpatch/printer/konica_universal.ps1
+# the path for Konica is: https://thewindwardschool.io/winpatch/printer/konica_universal.ps1
 # the path for Ricoh is: https://thewindwardschool.io/winpatch/printer/ricoh_universal.ps1
 
 try {
