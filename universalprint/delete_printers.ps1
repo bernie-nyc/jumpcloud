@@ -1,7 +1,9 @@
-# Self-elevate if not running as admin
-if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole] "Administrator")) {
-    Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
-    exit
+# Check if script runs as administrator
+if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(
+    [Security.Principal.WindowsBuiltinRole] "Administrator"))
+{
+    Write-Warning "This script requires Administrator privileges. Please restart PowerShell as Administrator."
+    break
 }
 
 # Patterns for printer names to remove
