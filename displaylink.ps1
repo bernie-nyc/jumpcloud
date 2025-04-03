@@ -69,7 +69,7 @@ if (-Not (Verify-FileSize -filePath $installerPath -expectedSize $expectedFileSi
 # Execute the installer silently without user interaction or forced restart
 # --------------------
 Write-Host "Starting silent installation of DisplayLink driver."
-Start-Process -FilePath $installerPath -ArgumentList "/silent /norestart" -Wait
+Start-Process -FilePath $installerPath -ArgumentList "-silent -suppressUpToDateInfo" -Wait
 
 # Inform user that installation has completed successfully
 Write-Host "DisplayLink installation completed successfully."
