@@ -1,5 +1,16 @@
 # Consolidated ECSM-CSUA Uninstall and MSI Reg Cleanup
 # Log file for errors
+
+# Check if running as administrator
+if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole] "Administrator"))
+{
+    Write-Warning "This script needs to run as Administrator."
+    
+    # Relaunch the script with admin rights
+    Start-Process powershell.exe "-File `"$PSCommandPath`"" -Verb RunAs
+    exit
+}
+
 $logFile = "C:\tws\exclaimer_script_errors.log"
 
 function LogError($message) {
